@@ -3,12 +3,12 @@ from django.utils import timezone
 
 
 class Post(models.Model):
-	작성자 = models.ForeignKey('auth.User')
-	제목 = models.CharField(max_length=200)
-	내용 = models.TextField()
-	작성일자 = models.DateTimeField(
+	author = models.ForeignKey('auth.User')
+	title = models.CharField(max_length=200)
+	text = models.TextField()
+	created_date = models.DateTimeField(
 		default=timezone.now)
-	Published_Date = models.DateTimeField(
+	published_date = models.DateTimeField(
 		blank=True, null=True)
 
 	def publish(self):
