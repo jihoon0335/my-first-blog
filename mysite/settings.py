@@ -112,14 +112,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
 ALLOWED_HOSTS = ['*']
 
 DEBUG = True
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
 
