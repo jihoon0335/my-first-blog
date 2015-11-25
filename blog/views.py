@@ -25,7 +25,7 @@ def post_new(request):
 @login_required
 def post_new(request):
 	if request.method == "POST":
-		form = PostForm(request.POST)
+		form = PostForm(request.POST, request.FILES)
 		if form.is_valid():
 			post = form.save(commit=False)
 			post.author = request.user
@@ -40,7 +40,7 @@ def post_new(request):
 def post_edit(request, pk):
 	post = get_object_or_404(Post, pk=pk)
 	if request.method == "POST":
-		form = PostForm(request.POST, instance=post)
+		form = PostForm(request.POST, request.FILES, instance=post)
 		if form.is_valid():
 			post = form.save(commit=False)
 			post.author = request.user
@@ -93,3 +93,4 @@ def comment_remove(request, pk):
 	post_pk = comment.post.pk
 	comment.delete()
 	return redirect('blog.views.post_detail', pk=post_pk)
+
